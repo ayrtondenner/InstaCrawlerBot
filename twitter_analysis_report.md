@@ -303,7 +303,7 @@ Trump's Christmas tweet, which combined holiday greetings with political message
 
 To understand the deeper patterns in posting behavior beyond traditional metrics, we performed a dimensional reduction analysis combining:
 
-1. **Text Embeddings:** Each tweet's text and subtext were converted into a 1024-dimensional semantic vector using OpenAI's embedding model
+1. **Text Embeddings:** Each tweet's text (main content) and subtext (quoted/retweeted content, if any) were concatenated and converted into a 1024-dimensional semantic vector using OpenAI's embedding model
 2. **Content Features:** Added `has_video` and `image_count` as additional dimensions
 3. **PCA Reduction:** Applied Principal Component Analysis to reduce the combined 1026 dimensions down to 2D for visualization
 
@@ -321,8 +321,9 @@ The 2D PCA plot reveals distinct clustering patterns:
 - AOC's maximum PC1 (2.51) corresponds to a tweet with 3 images
 
 **Principal Component 2 (PC2) - Content Modality:**
-- PC2 appears to capture video presence and text-only vs multimedia distinction
-- High positive PC2 values (>0.5) primarily associated with video content
+- PC2 captures a combination of video presence and overall content structure
+- High positive PC2 values (>0.5) are primarily associated with video content
+- The interpretation of PC2 is less definitive than PC1, suggesting it captures multiple orthogonal content variations
 - Trump shows greater variance in PC2 (-0.44 to +1.06) vs AOC (-0.37 to +0.45)
 
 ### 5.3 Clustering Insights
@@ -454,7 +455,7 @@ This micro-universe of 30 tweets reveals two completely distinct styles of polit
 - **Dimensionality Reduction:** Principal Component Analysis (PCA) to reduce 1026-dimensional feature space to 2D for visualization
 - **Clustering Analysis:** Visual inspection of semantic clusters in reduced dimensional space to identify content patterns
 
-**Visualization:** 2D scatter plot showing PCA-reduced tweet positions, with color coding by author (blue for AOC, red for Trump). Available in the repository as part of analysis.ipynb output. PCA coordinates for each tweet stored in 2D_PCA.json.
+**Visualization:** 2D scatter plot showing PCA-reduced tweet positions, with color coding by author (blue for AOC, red for Trump). Available in the repository as part of analysis.ipynb output. Individual tweet PCA coordinates (pca1, pca2 values) are stored in 2D_PCA.json for reference and further analysis.
 
 **Limitations:** This is a small sample and represents only a temporal snapshot. Longitudinal analyses with larger samples could reveal additional patterns and seasonal variations.
 
