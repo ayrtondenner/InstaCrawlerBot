@@ -297,9 +297,101 @@ Trump's Christmas tweet, which combined holiday greetings with political message
 
 ---
 
-## 5. Conclusions
+## 5. Semantic and Content Clustering Analysis (2D Visualization)
 
-### 5.1 AOC Profile
+### 5.1 Methodology
+
+To understand the deeper patterns in posting behavior beyond traditional metrics, we performed a dimensional reduction analysis combining:
+
+1. **Text Embeddings:** Each tweet's text (main content) and subtext (quoted/retweeted content, if any) were concatenated and converted into a 1024-dimensional semantic vector using OpenAI's embedding model
+2. **Content Features:** Added `has_video` and `image_count` as additional dimensions
+3. **PCA Reduction:** Applied Principal Component Analysis to reduce the combined 1026 dimensions down to 2D for visualization
+
+This approach allows us to visualize tweets in a semantic space where similar content, tone, and multimedia usage cluster together.
+
+### 5.2 Visual Distribution Patterns
+
+The 2D PCA plot reveals distinct clustering patterns:
+
+**Principal Component 1 (PC1) - Multimedia Axis:**
+- PC1 primarily captures multimedia content (images/videos)
+- High positive PC1 values (>0.4) strongly correlate with tweets containing multiple images
+- AOC range: -0.66 to +2.51 | Trump range: -0.64 to +3.53
+- Trump's maximum PC1 (3.53) corresponds to a tweet with 4 images
+- AOC's maximum PC1 (2.51) corresponds to a tweet with 3 images
+
+**Principal Component 2 (PC2) - Content Modality:**
+- PC2 captures a combination of video presence and overall content structure
+- High positive PC2 values (>0.5) are primarily associated with video content
+- The interpretation of PC2 is less definitive than PC1, suggesting it captures multiple orthogonal content variations
+- Trump shows greater variance in PC2 (-0.44 to +1.06) vs AOC (-0.37 to +0.45)
+
+### 5.3 Clustering Insights
+
+#### AOC's Content Clusters
+
+**Semantic Concentration:**
+- AOC's tweets show tighter clustering (lower variance in both dimensions)
+- PC1 mean: -0.08, standard deviation: 0.91
+- PC2 mean: -0.14, standard deviation: 0.29
+- This suggests more consistent content structure and format
+
+**Multimedia Strategy:**
+- Only 3 out of 11 tweets (27%) have high PC1 values (multimedia-rich)
+- Most AOC tweets cluster in the negative PC1 region (text-focused)
+- 2 tweets with video content show elevated PC2 values
+- Strategic use of multimedia for specific high-impact messages
+
+#### Trump's Content Clusters
+
+**Semantic Dispersion:**
+- Trump's tweets show wider distribution across both dimensions
+- PC1 mean: 0.05, standard deviation: 0.96
+- PC2 mean: 0.08, standard deviation: 0.54
+- Greater variance indicates more diverse content formats and structures
+
+**Multimedia Strategy:**
+- 8 out of 19 tweets (42%) have high PC1 values (multimedia-rich)
+- More varied multimedia usage with 4 video tweets and 8 with images
+- Several clusters indicate different content categories:
+  - Text-only political statements (low PC1, low PC2)
+  - Image-based announcements (high PC1, low PC2)
+  - Video content (varying PC1, high PC2)
+
+### 5.4 Comparative Observations
+
+**Content Consistency vs Variety:**
+- AOC maintains tighter semantic clustering, indicating more consistent messaging format
+- Trump's wider distribution suggests deliberate content variety to reach different audience segments
+
+**Multimedia Integration:**
+- Trump uses multimedia 1.6x more frequently than AOC (42% vs 27% of high PC1 tweets)
+- Both politicians reserve maximum multimedia (3-4 images) for specific strategic moments
+
+**Semantic Distance:**
+- Despite having different follower bases and engagement patterns, both politicians' content occupies similar regions of the semantic space
+- No complete separation between clusters, indicating overlap in fundamental topics (politics, policy, governance)
+- The distinction is more in presentation format than core subject matter
+
+**Strategic Patterns:**
+- AOC: Concentrated, text-heavy approach with selective multimedia enhancement
+- Trump: Diverse format strategy mixing text, images, and video to maintain attention
+
+### 5.5 Key Findings
+
+1. **PC1 as Multimedia Indicator:** The first principal component effectively captures the multimedia richness of tweets, making it a useful metric for content strategy analysis
+
+2. **Consistency vs Diversity:** AOC's tighter clustering suggests brand consistency, while Trump's dispersion indicates format experimentation
+
+3. **Content Modality:** Both politicians use video content sparingly but strategically, with video tweets occupying distinct regions in the semantic space
+
+4. **Semantic Overlap:** Despite dramatically different communication styles documented in earlier sections, the semantic embedding space shows overlap, suggesting common political discourse foundations
+
+---
+
+## 6. Conclusions
+
+### 6.1 AOC Profile
 
 Alexandria Ocasio-Cortez adopts a **focused and high-quality communication strategy**, with well-crafted posts that prioritize progressive messages, government accountability, and civic mobilization. Her strategic use of multimedia (especially videos to generate discussion) and her consistency in always including written text demonstrate a professional and calculated approach to social media.
 
@@ -315,7 +407,7 @@ Alexandria Ocasio-Cortez adopts a **focused and high-quality communication strat
 - Focus on concrete public policies
 - Progressive and educational tone
 
-### 5.2 Trump Profile
+### 6.2 Trump Profile
 
 Donald Trump maintains a **saturation strategy with exclusive original content**, posting with high frequency and never retweeting other users. His extensive messages, liberal use of capitals, and confrontational tone create a unique and unmistakable identity. The focus on celebrating achievements combined with attacks on adversaries generates massive engagement.
 
@@ -331,13 +423,13 @@ Donald Trump maintains a **saturation strategy with exclusive original content**
 - Triumphalist and confrontational tone
 - Focus on economy, immigration, and nationalism
 
-### 5.3 Final Observations
+### 6.3 Final Observations
 
 This micro-universe of 30 tweets reveals two completely distinct styles of political communication on social media:
 
-1. **AOC represents the "new generation"** of digitally native politicians, with calibrated messages, strategic multimedia use, and focus on progressive mobilization.
+1. **AOC represents the "new generation"** of digitally native politicians, with calibrated messages, strategic multimedia use, and focus on progressive mobilization. The 2D semantic analysis confirms her content consistency, with tightly clustered tweets indicating a coherent brand message.
 
-2. **Trump exemplifies "personality politics"**, where the politician becomes inseparable from the message, using unique tone, high post volume, and polarizing narrative to dominate the conversation.
+2. **Trump exemplifies "personality politics"**, where the politician becomes inseparable from the message, using unique tone, high post volume, and polarizing narrative to dominate the conversation. His tweets show greater semantic dispersion, reflecting intentional format diversity to maintain audience attention.
 
 3. **Both are effective** in their respective objectives: AOC in generating qualitative engagement and mobilization, Trump in absolute volume and media space dominance.
 
@@ -345,15 +437,25 @@ This micro-universe of 30 tweets reveals two completely distinct styles of polit
 
 5. **Temporal patterns:** AOC focuses on business hours (morning), Trump dominates evening hours - strategies that likely reflect different audience demographics.
 
+6. **Semantic insights:** The 2D PCA visualization reveals that while both politicians occupy similar semantic topic spaces (politics, policy, governance), they differentiate through content format and multimedia integration. PC1 effectively captures multimedia richness, while PC2 reflects content modality choices.
+
 ---
 
-## 6. Methodology
+## 7. Methodology
 
 **Data Source:** Tweets scraped from official accounts @AOC and @realDonaldTrump  
 **Period:** Recent sample collected on 12/30/2025  
 **Sample Size:** 30 tweets (11 AOC + 19 Trump)  
-**Analysis Tools:** Python, Pandas, statistical analyses documented in analysis.ipynb  
+**Analysis Tools:** Python, Pandas, Scikit-learn, OpenAI API, statistical analyses documented in analysis.ipynb  
 **Metrics Analyzed:** Views, likes, reposts, replies, saves, text characteristics, multimedia presence, statistical correlations
+
+**Advanced Analysis Techniques:**
+- **Text Embeddings:** OpenAI's text-embedding-3-large model (1024 dimensions) to capture semantic meaning of tweet text and subtext
+- **Feature Engineering:** Combined semantic embeddings with binary and count features (has_video, image_count) for comprehensive content characterization
+- **Dimensionality Reduction:** Principal Component Analysis (PCA) to reduce 1026-dimensional feature space to 2D for visualization
+- **Clustering Analysis:** Visual inspection of semantic clusters in reduced dimensional space to identify content patterns
+
+**Visualization:** 2D scatter plot showing PCA-reduced tweet positions, with color coding by author (blue for AOC, red for Trump). Available in the repository as part of analysis.ipynb output. Individual tweet PCA coordinates (pca1, pca2 values) are stored in 2D_PCA.json for reference and further analysis.
 
 **Limitations:** This is a small sample and represents only a temporal snapshot. Longitudinal analyses with larger samples could reveal additional patterns and seasonal variations.
 
