@@ -11,7 +11,7 @@ This repository contains a detailed comparative analysis of the posting styles o
 - **[analysis.ipynb](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/analysis.ipynb)**: Jupyter notebook with detailed statistical analyses of the collected tweets
 - **Analysis Reports:**
   - [Report in English (EN-US)](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/twitter_analysis_report.md)
-  - [Relatório em Português (PT-BR)](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/relatorio_analise_tweets.md)
+  - [Report in Portuguese (PT-BR)](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/relatorio_analise_tweets.md)
 
 The reports include analyses on:
 - Volume and distribution of posts
@@ -34,7 +34,7 @@ Este repositório contém uma análise comparativa detalhada dos estilos de post
 - **[data](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/data)**: Pasta contendo os tweets raspados dos políticos AOC e Trump em formato JSON
 - **[analysis.ipynb](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/analysis.ipynb)**: Notebook Jupyter com análises estatísticas detalhadas dos tweets coletados
 - **Relatórios de Análise:**
-  - [Report in English (EN-US)](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/twitter_analysis_report.md)
+  - [Relatório em Inglês (EN-US)](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/twitter_analysis_report.md)
   - [Relatório em Português (PT-BR)](https://github.com/ayrtondenner/InstaCrawlerBot/tree/main/relatorio_analise_tweets.md)
 
 Os relatórios incluem análises sobre:
