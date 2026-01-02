@@ -1,5 +1,5 @@
 # InstaCrawlerBot
-An application created to assist in a History undergraduate course at UFOP
+A project for a netnography analysis activity for the course ["Seminário em História da América IV - História dos Estados Unidos" (HIS832)](https://ichs.ufop.br/sites/default/files/ichs/files/his_832_-_seminario_em_historia_da_america_iv_-_tereza_spyer.pdf), taken in the 2025/2 semester, in the History undergraduate program at UFOP.
 
 ## Tweet Analysis: AOC vs Trump
 
@@ -23,7 +23,7 @@ The reports include analyses on:
 ---
 
 # InstaCrawlerBot (PT-BR)
-Uma aplicação feita para auxiliar em uma disciplina na graduação de História - UFOP
+Um projeto para uma atividade de análise de netnografia para a disciplina ["Seminário em História da América IV - História dos Estados Unidos" (HIS832)](https://ichs.ufop.br/sites/default/files/ichs/files/his_832_-_seminario_em_historia_da_america_iv_-_tereza_spyer.pdf), cursada no semestre 2025/2, na graduação de História - UFOP.
 
 ## Análise de Tweets: AOC vs Trump
 
