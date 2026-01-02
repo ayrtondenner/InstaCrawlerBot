@@ -297,9 +297,101 @@ O tweet de Natal de Trump, que combinava saudações festivas com mensagens pol�
 
 ---
 
-## 5. Conclusões
+## 5. Análise de Agrupamento Semântico e de Conteúdo (Visualização 2D)
 
-### 5.1 Perfil de AOC
+### 5.1 Metodologia
+
+Para compreender os padrões mais profundos no comportamento de postagem além das métricas tradicionais, realizamos uma análise de redução dimensional combinando:
+
+1. **Embeddings de Texto:** O texto (conteúdo principal) e subtexto (conteúdo citado/repostado, se houver) de cada tweet foram concatenados e convertidos em um vetor semântico de 1024 dimensões usando o modelo de embedding da OpenAI
+2. **Características de Conteúdo:** Adicionadas `has_video` e `image_count` como dimensões adicionais
+3. **Redução PCA:** Aplicada Análise de Componentes Principais para reduzir as 1026 dimensões combinadas para 2D para visualização
+
+Esta abordagem permite visualizar tweets em um espaço semântico onde conteúdo similar, tom e uso de multimídia se agrupam juntos.
+
+### 5.2 Padrões de Distribuição Visual
+
+O gráfico PCA 2D revela padrões distintos de agrupamento:
+
+**Componente Principal 1 (PC1) - Eixo Multimídia:**
+- PC1 captura principalmente conteúdo multimídia (imagens/vídeos)
+- Valores altos e positivos de PC1 (>0.4) correlacionam fortemente com tweets contendo múltiplas imagens
+- Intervalo AOC: -0.66 a +2.51 | Intervalo Trump: -0.64 a +3.53
+- O PC1 máximo de Trump (3.53) corresponde a um tweet com 4 imagens
+- O PC1 máximo de AOC (2.51) corresponde a um tweet com 3 imagens
+
+**Componente Principal 2 (PC2) - Modalidade de Conteúdo:**
+- PC2 captura uma combinação de presença de vídeo e estrutura geral do conteúdo
+- Valores altos e positivos de PC2 (>0.5) estão principalmente associados com conteúdo de vídeo
+- A interpretação de PC2 é menos definitiva que PC1, sugerindo que captura múltiplas variações ortogonais de conteúdo
+- Trump mostra maior variância em PC2 (-0.44 a +1.06) vs AOC (-0.37 a +0.45)
+
+### 5.3 Insights de Agrupamento
+
+#### Agrupamentos de Conteúdo da AOC
+
+**Concentração Semântica:**
+- Os tweets da AOC mostram agrupamento mais compacto (menor variância em ambas as dimensões)
+- PC1 média: -0.08, desvio padrão: 0.91
+- PC2 média: -0.14, desvio padrão: 0.29
+- Isso sugere estrutura e formato de conteúdo mais consistentes
+
+**Estratégia Multimídia:**
+- Apenas 3 de 11 tweets (27%) têm valores altos de PC1 (rico em multimídia)
+- A maioria dos tweets da AOC se agrupa na região negativa de PC1 (focados em texto)
+- 2 tweets com conteúdo de vídeo mostram valores elevados de PC2
+- Uso estratégico de multimídia para mensagens específicas de alto impacto
+
+#### Agrupamentos de Conteúdo do Trump
+
+**Dispersão Semântica:**
+- Os tweets do Trump mostram distribuição mais ampla em ambas as dimensões
+- PC1 média: 0.05, desvio padrão: 0.96
+- PC2 média: 0.08, desvio padrão: 0.54
+- Maior variância indica formatos e estruturas de conteúdo mais diversificados
+
+**Estratégia Multimídia:**
+- 8 de 19 tweets (42%) têm valores altos de PC1 (rico em multimídia)
+- Uso mais variado de multimídia com 4 tweets de vídeo e 8 com imagens
+- Vários agrupamentos indicam diferentes categorias de conteúdo:
+  - Declarações políticas somente texto (PC1 baixo, PC2 baixo)
+  - Anúncios baseados em imagens (PC1 alto, PC2 baixo)
+  - Conteúdo de vídeo (PC1 variável, PC2 alto)
+
+### 5.4 Observações Comparativas
+
+**Consistência vs Variedade de Conteúdo:**
+- AOC mantém agrupamento semântico mais compacto, indicando formato de mensagem mais consistente
+- A distribuição mais ampla de Trump sugere variedade deliberada de conteúdo para alcançar diferentes segmentos de público
+
+**Integração Multimídia:**
+- Trump usa multimídia 1.6x mais frequentemente que AOC (42% vs 27% de tweets com PC1 alto)
+- Ambos os políticos reservam multimídia máxima (3-4 imagens) para momentos estratégicos específicos
+
+**Distância Semântica:**
+- Apesar de terem diferentes bases de seguidores e padrões de engajamento, o conteúdo de ambos os políticos ocupa regiões similares do espaço semântico
+- Não há separação completa entre agrupamentos, indicando sobreposição em tópicos fundamentais (política, políticas públicas, governança)
+- A distinção está mais no formato de apresentação do que no assunto central
+
+**Padrões Estratégicos:**
+- AOC: Abordagem concentrada e focada em texto com aprimoramento multimídia seletivo
+- Trump: Estratégia de formato diversificado misturando texto, imagens e vídeo para manter atenção
+
+### 5.5 Principais Descobertas
+
+1. **PC1 como Indicador Multimídia:** O primeiro componente principal captura efetivamente a riqueza multimídia dos tweets, tornando-o uma métrica útil para análise de estratégia de conteúdo
+
+2. **Consistência vs Diversidade:** O agrupamento mais compacto da AOC sugere consistência de marca, enquanto a dispersão de Trump indica experimentação de formato
+
+3. **Modalidade de Conteúdo:** Ambos os políticos usam conteúdo de vídeo com parcimônia mas estrategicamente, com tweets de vídeo ocupando regiões distintas no espaço semântico
+
+4. **Sobreposição Semântica:** Apesar dos estilos de comunicação dramaticamente diferentes documentados nas seções anteriores, o espaço de embedding semântico mostra sobreposição, sugerindo fundamentos comuns no discurso político
+
+---
+
+## 6. Conclusões
+
+### 6.1 Perfil de AOC
 
 Alexandria Ocasio-Cortez adota uma **estratégia de comunicação focada e de alta qualidade**, com postagens bem elaboradas que priorizam mensagens progressistas, accountability governamental e mobilização cívica. Seu uso estratégico de multimídia (especialmente vídeos para gerar discussão) e sua consistência em sempre incluir texto escrito demonstram uma abordagem profissional e calculada das redes sociais.
 
@@ -315,7 +407,7 @@ Alexandria Ocasio-Cortez adota uma **estratégia de comunicação focada e de al
 - Foco em políticas públicas concretas
 - Tom progressista e educativo
 
-### 5.2 Perfil de Trump
+### 6.2 Perfil de Trump
 
 Donald Trump mantém uma **estratégia de saturação com conteúdo original exclusivo**, postando com alta frequência e nunca repostando outros usuários. Suas mensagens extensas, uso liberal de maiúsculas e tom confrontacional criam uma identidade única e inconfundível. O foco em celebração de conquistas combinado com ataques a adversários gera engajamento massivo.
 
@@ -331,13 +423,13 @@ Donald Trump mantém uma **estratégia de saturação com conteúdo original exc
 - Tom triunfalista e confrontacional
 - Foco em economia, imigração e nacionalismo
 
-### 5.3 Observações Finais
+### 6.3 Observações Finais
 
 Este microuniverso de 30 tweets revela dois estilos completamente distintos de comunicação política nas redes sociais:
 
-1. **AOC representa a "nova geração"** de políticos digitalmente nativos, com mensagens calibradas, uso estratégico de multimídia e foco em mobilização progressista.
+1. **AOC representa a "nova geração"** de políticos digitalmente nativos, com mensagens calibradas, uso estratégico de multimídia e foco em mobilização progressista. A análise semântica 2D confirma a consistência de seu conteúdo, com tweets agrupados de forma compacta indicando uma mensagem de marca coerente.
 
-2. **Trump exemplifica a "política de personalidade"**, onde o político se torna inseparável da mensagem, usando tom único, volume alto de postagens e narrativa polarizadora para dominar a conversa.
+2. **Trump exemplifica a "política de personalidade"**, onde o político se torna inseparável da mensagem, usando tom único, volume alto de postagens e narrativa polarizadora para dominar a conversa. Seus tweets mostram maior dispersão semântica, refletindo diversidade intencional de formato para manter a atenção da audiência.
 
 3. **Ambos são efetivos** em seus respectivos objetivos: AOC em gerar engajamento qualitativo e mobilização, Trump em volume absoluto e domínio de espaço midiático.
 
@@ -345,15 +437,25 @@ Este microuniverso de 30 tweets revela dois estilos completamente distintos de c
 
 5. **Padrões temporais:** AOC foca no horário comercial (manhã), Trump domina o horário noturno - estratégias que provavelmente refletem diferentes demografias de audiência.
 
+6. **Insights semânticos:** A visualização PCA 2D revela que, embora ambos os políticos ocupem espaços de tópicos semânticos similares (política, políticas públicas, governança), eles se diferenciam através do formato de conteúdo e integração multimídia. PC1 captura efetivamente a riqueza multimídia, enquanto PC2 reflete escolhas de modalidade de conteúdo.
+
 ---
 
-## 6. Metodologia
+## 7. Metodologia
 
 **Fonte de Dados:** Tweets raspados das contas oficiais @AOC e @realDonaldTrump  
 **Período:** Amostra recente coletada em 30/12/2025  
 **Tamanho da Amostra:** 30 tweets (11 AOC + 19 Trump)  
-**Ferramentas de Análise:** Python, Pandas, análises estatísticas documentadas em analysis.ipynb  
+**Ferramentas de Análise:** Python, Pandas, Scikit-learn, API OpenAI, análises estatísticas documentadas em analysis.ipynb  
 **Métricas Analisadas:** Views, likes, reposts, respostas, salvamentos, características de texto, presença de multimídia, correlações estatísticas
+
+**Técnicas de Análise Avançadas:**
+- **Embeddings de Texto:** Modelo text-embedding-3-large da OpenAI (1024 dimensões) para capturar significado semântico do texto e subtexto dos tweets
+- **Engenharia de Características:** Combinação de embeddings semânticos com características binárias e de contagem (has_video, image_count) para caracterização abrangente do conteúdo
+- **Redução de Dimensionalidade:** Análise de Componentes Principais (PCA) para reduzir espaço de características de 1026 dimensões para 2D para visualização
+- **Análise de Agrupamento:** Inspeção visual de agrupamentos semânticos no espaço dimensional reduzido para identificar padrões de conteúdo
+
+**Visualização:** Gráfico de dispersão 2D mostrando posições dos tweets reduzidas por PCA, com codificação de cores por autor (azul para AOC, vermelho para Trump). Disponível no repositório como parte da saída do analysis.ipynb. Coordenadas PCA individuais dos tweets (valores pca1, pca2) são armazenadas em 2D_PCA.json para referência e análise posterior.
 
 **Limitações:** Esta é uma amostra pequena e representa apenas um snapshot temporal. Análises longitudinais com amostras maiores poderiam revelar padrões adicionais e variações sazonais.
 
