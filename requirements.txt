@@ -1,0 +1,4 @@
+openai==2.14.0
+python-dotenv==1.2.1
+selenium==4.39.0
+webdriver_manager==4.0.2
